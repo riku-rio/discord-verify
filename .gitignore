@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.artifacts/
+*.tgz
+.DS_Store
+Thumbs.db

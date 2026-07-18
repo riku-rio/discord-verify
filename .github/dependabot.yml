@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      typescript-tooling:
+        patterns: ["typescript", "typescript-eslint", "@types/*", "eslint", "@eslint/*", "prettier", "vitest", "@vitest/*"]
+    ignore:
+      - dependency-name: discord.js
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: pip
+    directory: /packages/adapter-discordpy/python
+    schedule:
+      interval: weekly
+    groups:
+      python-tooling:
+        patterns: ["pytest", "pytest-cov", "ruff", "mypy"]
+    ignore:
+      - dependency-name: discord.py
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

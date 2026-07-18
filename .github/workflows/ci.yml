@@ -1,0 +1,139 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PNPM_VERSION: 11.11.0
+
+jobs:
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Enable pnpm
+        shell: pwsh
+        run: |
+          corepack enable
+          corepack prepare "pnpm@$env:PNPM_VERSION" --activate
+      - run: pnpm install --no-frozen-lockfile
+      - run: python -m pip install -e "packages/adapter-discordpy/python[dev]"
+      - run: pnpm check
+      - name: Check synthetic secret is absent from artifacts
+        shell: pwsh
+        run: |
+          $needle = 'discord-verify-test-token-never-real'
+          $matches = Get-ChildItem -Path .artifacts,coverage -File -Recurse -ErrorAction SilentlyContinue | Select-String -SimpleMatch $needle
+          if ($matches) { Write-Error 'Synthetic secret leaked into build artifacts.' }
+      - name: Upload diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-diagnostics
+          path: |
+            .artifacts
+            coverage
+          if-no-files-found: ignore
+
+  node-compatibility:
+    name: Node ${{ matrix.node }} / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [22, 24]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Enable pnpm
+        shell: pwsh
+        run: |
+          corepack enable
+          corepack prepare "pnpm@$env:PNPM_VERSION" --activate
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm check:repository
+
+  python-versions:
+    name: Python ${{ matrix.python }} / Ubuntu
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.11', '3.12', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e "packages/adapter-discordpy/python[dev]"
+      - run: ruff check packages/adapter-discordpy/python
+      - run: ruff format --check packages/adapter-discordpy/python
+      - run: mypy packages/adapter-discordpy/python/src
+      - run: python -m pytest packages/adapter-discordpy/python
+
+  python-platforms:
+    name: Python 3.13 / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -e "packages/adapter-discordpy/python[dev]"
+      - run: ruff check packages/adapter-discordpy/python
+      - run: ruff format --check packages/adapter-discordpy/python
+      - run: mypy packages/adapter-discordpy/python/src
+      - run: python -m pytest packages/adapter-discordpy/python
+
+  package-validation:
+    name: Package validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Enable pnpm
+        shell: pwsh
+        run: |
+          corepack enable
+          corepack prepare "pnpm@$env:PNPM_VERSION" --activate
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm build
+      - run: pnpm pack:check
+
+  architecture:
+    name: Architecture
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/validate-repository.mjs

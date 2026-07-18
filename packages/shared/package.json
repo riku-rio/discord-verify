@@ -1,0 +1,15 @@
+{
+  "name": "@discord-verify/shared",
+  "version": "0.1.0",
+  "description": "Low-level shared types and package metadata.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist"],
+  "publishConfig": { "access": "public" },
+  "engines": { "node": ">=22 <27" },
+  "scripts": { "build": "tsc -b", "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"", "typecheck": "tsc -b --pretty false", "test": "vitest run" }
+}
