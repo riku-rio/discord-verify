@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "linked": [["@discord-verify/core", "@discord-verify/adapter-protocol", "@discord-verify/adapter-discordjs", "@discord-verify/adapter-discordpy", "@discord-verify/shared", "@discord-verify/test-kit", "discord-verify"]],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

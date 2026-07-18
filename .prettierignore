@@ -1,0 +1,6 @@
+coverage
+**/dist
+**/.venv
+**/generated
+pnpm-lock.yaml
+uv.lock
