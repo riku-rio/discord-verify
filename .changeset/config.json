@@ -3,7 +3,17 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [["@discord-verify/core", "@discord-verify/adapter-protocol", "@discord-verify/adapter-discordjs", "@discord-verify/adapter-discordpy", "@discord-verify/shared", "@discord-verify/test-kit", "discord-verify"]],
+  "linked": [
+    [
+      "@discord-verify/core",
+      "@discord-verify/adapter-protocol",
+      "@discord-verify/adapter-discordjs",
+      "@discord-verify/adapter-discordpy",
+      "@discord-verify/shared",
+      "@discord-verify/test-kit",
+      "discord-verify"
+    ]
+  ],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",

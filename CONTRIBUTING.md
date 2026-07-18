@@ -21,14 +21,14 @@ pnpm pack:check
 
 ## Architecture
 
-Framework-neutral behavior belongs in `packages/core`, contracts in `packages/adapter-protocol`,
-and shared primitives in `packages/shared`. Framework behavior must stay in its named adapter.
+Framework-neutral behavior belongs in `packages/core`, contracts in `packages/adapter-protocol`, and
+shared primitives in `packages/shared`. Framework behavior must stay in its named adapter.
 
 ## Public contracts
 
 Changes to CLI output, JSON schemas, error codes, protocol messages, or published types require a
-changeset and compatibility notes. Breaking changes must not be merged without an approved versioning
-plan.
+changeset and compatibility notes. Breaking changes must not be merged without an approved
+versioning plan.
 
 ## Releases
 

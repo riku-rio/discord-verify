@@ -1,7 +1,7 @@
 # Discord Verify
 
-Discord Verify is a CLI-first verification framework for Discord bots. The repository is currently in
-foundation development; product commands begin in Milestone M1.
+Discord Verify is a CLI-first verification framework for Discord bots. The repository is currently
+in foundation development; product commands begin in Milestone M1.
 
 ## Development
 

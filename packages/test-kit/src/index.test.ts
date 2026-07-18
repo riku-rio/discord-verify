@@ -1,5 +1,7 @@
 import { access } from 'node:fs/promises';
+
 import { describe, expect, it } from 'vitest';
+
 import { createTemporaryDirectory } from './index.js';
 
 describe('createTemporaryDirectory', () => {

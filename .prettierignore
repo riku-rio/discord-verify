@@ -4,3 +4,7 @@ coverage
 **/generated
 pnpm-lock.yaml
 uv.lock
+docs/PRD.md
+docs/TASKS.md
+.coverage
+artifacts
