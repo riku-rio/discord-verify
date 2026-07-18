@@ -214,21 +214,21 @@ Create a stable repository, package structure, quality gates, and contributor wo
 
 * **Dependencies:** None
 
-* [ ] Create the root project structure.
+* [x] Create the root project structure.
 
-* [ ] Add `packages/`.
+* [x] Add `packages/`.
 
-* [ ] Add `docs/`.
+* [x] Add `docs/`.
 
-* [ ] Add `examples/`.
+* [x] Add `examples/`.
 
-* [ ] Add `schemas/`.
+* [x] Add `schemas/`.
 
-* [ ] Add `scripts/`.
+* [x] Add `scripts/`.
 
-* [ ] Add `.github/`.
+* [x] Add `.github/`.
 
-* [ ] Add `tests/`.
+* [x] Add `tests/`.
 
 Proposed structure:
 
@@ -261,9 +261,9 @@ discord-verify/
 
 **Acceptance criteria**
 
-* [ ] Every workspace package can be discovered by the package manager.
-* [ ] Root scripts can build and test all packages.
-* [ ] No package contains framework-specific behavior unless explicitly named as an adapter.
+* [x] Every workspace package can be discovered by the package manager.
+* [x] Root scripts can build and test all packages.
+* [x] No package contains framework-specific behavior unless explicitly named as an adapter.
 
 ---
 
@@ -273,21 +273,21 @@ discord-verify/
 
 * **Dependencies:** DV-0001
 
-* [ ] Select `pnpm` workspaces as the default development package manager.
+* [x] Select `pnpm` workspaces as the default development package manager.
 
-* [ ] Document npm compatibility for consumers.
+* [x] Document npm compatibility for consumers.
 
-* [ ] Add `packageManager` to root `package.json`.
+* [x] Add `packageManager` to root `package.json`.
 
-* [ ] Pin the supported package-manager version.
+* [x] Pin the supported package-manager version.
 
-* [ ] Configure workspace package resolution.
+* [x] Configure workspace package resolution.
 
 **Acceptance criteria**
 
-* [ ] A fresh clone installs with one command.
-* [ ] Workspace dependencies resolve without manual linking.
-* [ ] Published packages do not require pnpm for consumers.
+* [x] A fresh clone installs with one command.
+* [x] Workspace dependencies resolve without manual linking.
+* [x] Published packages do not require pnpm for consumers.
 
 ---
 
@@ -297,17 +297,17 @@ discord-verify/
 
 * **Dependencies:** DV-0001
 
-* [ ] Enable strict TypeScript.
+* [x] Enable strict TypeScript.
 
-* [ ] Configure project references.
+* [x] Configure project references.
 
-* [ ] Configure Node.js target and module settings.
+* [x] Configure Node.js target and module settings.
 
-* [ ] Create separate configs for source, tests, and build.
+* [x] Create separate configs for source, tests, and build.
 
-* [ ] Enable declaration output for public packages.
+* [x] Enable declaration output for public packages.
 
-* [ ] Enable source maps.
+* [x] Enable source maps.
 
 Required compiler expectations:
 
@@ -322,9 +322,9 @@ noFallthroughCasesInSwitch
 
 **Acceptance criteria**
 
-* [ ] All TypeScript packages build with zero type errors.
-* [ ] Public packages generate declaration files.
-* [ ] Test files are excluded from publish output.
+* [x] All TypeScript packages build with zero type errors.
+* [x] Public packages generate declaration files.
+* [x] Test files are excluded from publish output.
 
 ---
 
@@ -334,25 +334,25 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0003
 
-* [ ] Configure ESLint.
+* [x] Configure ESLint.
 
-* [ ] Configure Prettier.
+* [x] Configure Prettier.
 
-* [ ] Add import ordering rules.
+* [x] Add import ordering rules.
 
-* [ ] Add no-floating-promises rules.
+* [x] Add no-floating-promises rules.
 
-* [ ] Add unsafe-any restrictions.
+* [x] Add unsafe-any restrictions.
 
-* [ ] Add command scripts for check and fix.
+* [x] Add command scripts for check and fix.
 
-* [ ] Add Markdown formatting rules where practical.
+* [x] Add Markdown formatting rules where practical.
 
 **Acceptance criteria**
 
-* [ ] CI rejects lint errors.
-* [ ] Formatting can be validated without rewriting files.
-* [ ] Generated fixtures may be excluded explicitly.
+* [x] CI rejects lint errors.
+* [x] Formatting can be validated without rewriting files.
+* [x] Generated fixtures may be excluded explicitly.
 
 ---
 
@@ -362,23 +362,23 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0003
 
-* [ ] Select Vitest for TypeScript unit and integration tests.
+* [x] Select Vitest for TypeScript unit and integration tests.
 
-* [ ] Configure coverage.
+* [x] Configure coverage.
 
-* [ ] Configure test projects per package.
+* [x] Configure test projects per package.
 
-* [ ] Add timeout conventions.
+* [x] Add timeout conventions.
 
-* [ ] Add fixture helpers.
+* [x] Add fixture helpers.
 
-* [ ] Add deterministic temporary-directory helpers.
+* [x] Add deterministic temporary-directory helpers.
 
 **Acceptance criteria**
 
-* [ ] Root test command runs all TypeScript tests.
-* [ ] Coverage output is generated.
-* [ ] Tests run consistently on Windows, Linux, and macOS.
+* [x] Root test command runs all TypeScript tests.
+* [x] Coverage output is generated.
+* [x] Tests run consistently on Windows, Linux, and macOS.
 
 ---
 
@@ -388,31 +388,31 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0001
 
-* [ ] Add Python bridge source directory.
+* [x] Add Python bridge source directory.
 
-* [ ] Add `pyproject.toml` for adapter development tests.
+* [x] Add `pyproject.toml` for adapter development tests.
 
-* [ ] Configure `uv` as the Python environment and dependency manager.
+* [x] Configure `uv` as the Python environment and dependency manager.
 
-* [ ] Configure `pytest`.
+* [x] Configure `pytest`.
 
-* [ ] Configure `ruff`.
+* [x] Configure `ruff`.
 
-* [ ] Configure `mypy`.
+* [x] Configure `mypy`.
 
-* [ ] Define supported Python versions (3.10, 3.11, 3.12, 3.13).
+* [x] Define supported Python versions (3.10, 3.11, 3.12, 3.13).
 
-* [ ] Add Python virtual-environment instructions using `uv`.
+* [x] Add Python virtual-environment instructions using `uv`.
 
-* [ ] Add `uv.lock` to version control.
+* [x] Add `uv.lock` to version control.
 
-* [ ] Document `uv` as the preferred Python environment tool for contributors.
+* [x] Document `uv` as the preferred Python environment tool for contributors.
 
 **Acceptance criteria**
 
-* [ ] Python adapter tests run independently.
-* [ ] Static checks run in CI.
-* [ ] The npm package can later ship Python bridge files without requiring a separate PyPI package.
+* [x] Python adapter tests run independently.
+* [x] Static checks run in CI.
+* [x] The npm package can later ship Python bridge files without requiring a separate PyPI package.
 
 ---
 
@@ -422,22 +422,22 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0001
 
-* [ ] Add MIT license.
+* [x] Add MIT license.
 
-* [ ] Add copyright notice.
+* [x] Add copyright notice.
 
-* [ ] Add third-party notices strategy.
+* [x] Add third-party notices strategy.
 
-* [ ] Add contribution license statement if required.
+* [x] Add contribution license statement if required.
 
-* [ ] Add legal disclaimer about Discord trademarks.
+* [x] Add legal disclaimer about Discord trademarks.
 
-* [ ] Add legal disclaimer prohibiting self-bots and user tokens.
+* [x] Add legal disclaimer prohibiting self-bots and user tokens.
 
 **Acceptance criteria**
 
-* [ ] Repository license is detected correctly by GitHub.
-* [ ] Documentation clearly states that Discord Verify is not affiliated with Discord.
+* [x] Repository license is detected correctly by GitHub.
+* [x] Documentation clearly states that Discord Verify is not affiliated with Discord.
 
 ---
 
@@ -447,17 +447,17 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0001
 
-* [ ] Add `CONTRIBUTING.md`.
+* [x] Add `CONTRIBUTING.md`.
 
-* [ ] Add local setup instructions.
+* [x] Add local setup instructions.
 
-* [ ] Add testing instructions.
+* [x] Add testing instructions.
 
-* [ ] Add adapter-development instructions.
+* [x] Add adapter-development instructions.
 
-* [ ] Add public-contract change policy.
+* [x] Add public-contract change policy.
 
-* [ ] Add release-process overview.
+* [x] Add release-process overview.
 
 ---
 
@@ -467,17 +467,17 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0001
 
-* [ ] Add `SECURITY.md`.
+* [x] Add `SECURITY.md`.
 
-* [ ] Document responsible disclosure.
+* [x] Document responsible disclosure.
 
-* [ ] Define secret-leak severity.
+* [x] Define secret-leak severity.
 
-* [ ] Define test-guild safety severity.
+* [x] Define test-guild safety severity.
 
-* [ ] Define unsupported self-bot reports.
+* [x] Define unsupported self-bot reports.
 
-* [ ] Define supported release lines.
+* [x] Define supported release lines.
 
 ---
 
@@ -489,23 +489,23 @@ noFallthroughCasesInSwitch
 
 * **Dependencies:** DV-0004, DV-0005, DV-0006
 
-* [ ] Run installation.
+* [x] Run installation.
 
-* [ ] Run TypeScript type checks.
+* [x] Run TypeScript type checks.
 
-* [ ] Run lint.
+* [x] Run lint.
 
-* [ ] Run formatting check.
+* [x] Run formatting check.
 
-* [ ] Run TypeScript tests.
+* [x] Run TypeScript tests.
 
-* [ ] Run Python tests.
+* [x] Run Python tests.
 
-* [ ] Build all packages.
+* [x] Build all packages.
 
-* [ ] Validate package contents.
+* [x] Validate package contents.
 
-* [ ] Upload test artifacts on failure.
+* [x] Upload test artifacts on failure.
 
 Matrix:
 
@@ -527,9 +527,9 @@ Note: All Python environments should be managed using `uv`.
 
 **Acceptance criteria**
 
-* [ ] Pull requests cannot merge while required checks fail.
-* [ ] No job prints secret fixtures.
-* [ ] Platform-specific failures are separately visible.
+* [x] Pull requests cannot merge while required checks fail.
+* [x] No job prints secret fixtures.
+* [x] Platform-specific failures are separately visible.
 
 ---
 
@@ -539,15 +539,15 @@ Note: All Python environments should be managed using `uv`.
 
 * **Dependencies:** DV-0010
 
-* [ ] Configure dependency update automation.
+* [x] Configure dependency update automation.
 
-* [ ] Group development tooling updates.
+* [x] Group development tooling updates.
 
-* [ ] Separate Discord framework updates.
+* [x] Separate Discord framework updates.
 
-* [ ] Separate security updates.
+* [x] Separate security updates.
 
-* [ ] Prevent automatic adapter-major-version upgrades.
+* [x] Prevent automatic adapter-major-version upgrades.
 
 ---
 
@@ -557,26 +557,26 @@ Note: All Python environments should be managed using `uv`.
 
 * **Dependencies:** DV-0008
 
-* [ ] Define conventional commit scopes.
+* [x] Define conventional commit scopes.
 
-* [ ] Configure changeset workflow.
+* [x] Configure changeset workflow.
 
-* [ ] Add changelog generation.
+* [x] Add changelog generation.
 
-* [ ] Add package-version synchronization rules.
+* [x] Add package-version synchronization rules.
 
-* [ ] Define protocol and schema versioning policy.
+* [x] Define protocol and schema versioning policy.
 
 ---
 
 ## M0 Release Gate
 
-* [ ] Repository installs from a clean clone.
-* [ ] All TypeScript checks pass.
-* [ ] All Python checks pass.
-* [ ] All three operating systems pass CI.
-* [ ] License, security, and contribution files exist.
-* [ ] Workspace structure matches architecture boundaries.
+* [x] Repository installs from a clean clone.
+* [x] All TypeScript checks pass.
+* [x] All Python checks pass.
+* [x] All three operating systems pass CI.
+* [x] License, security, and contribution files exist.
+* [x] Workspace structure matches architecture boundaries.
 
 ---
 

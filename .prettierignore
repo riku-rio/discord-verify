@@ -1,0 +1,10 @@
+coverage
+**/dist
+**/.venv
+**/generated
+pnpm-lock.yaml
+uv.lock
+docs/PRD.md
+docs/TASKS.md
+.coverage
+artifacts
