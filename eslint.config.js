@@ -9,7 +9,12 @@ export default tseslint.config(
   ...tseslint.configs.stylisticTypeChecked,
   {
     files: ['**/*.ts'],
-    languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } },
+    languageOptions: {
+      parserOptions: {
+        projectService: { allowDefaultProject: ['packages/test-kit/src/*.test.ts'] },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     plugins: { import: importPlugin },
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
@@ -19,7 +24,10 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-call': 'error',
       '@typescript-eslint/no-unsafe-member-access': 'error',
       '@typescript-eslint/no-unsafe-return': 'error',
-      'import/order': ['error', { alphabetize: { order: 'asc', caseInsensitive: true }, 'newlines-between': 'always' }]
-    }
-  }
+      'import/order': [
+        'error',
+        { alphabetize: { order: 'asc', caseInsensitive: true }, 'newlines-between': 'always' },
+      ],
+    },
+  },
 );
