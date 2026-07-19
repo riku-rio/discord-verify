@@ -1,6 +1,5 @@
-import { getPackageVersion } from '../package-metadata.js';
-
 import type { CliCommand } from '../cli/types.js';
+import { getPackageVersion } from '../package-metadata.js';
 
 export function createVersionCommand(): CliCommand {
   return {

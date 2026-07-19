@@ -1,8 +1,7 @@
+import type { RunCliOptions } from './cli/types.js';
 import { writeHelp } from './commands/help.js';
 import { registerCommands } from './commands/register-commands.js';
 import { getPackageVersion } from './package-metadata.js';
-
-import type { RunCliOptions } from './cli/types.js';
 
 const HELP_FLAGS = new Set(['-h', '--help']);
 const VERSION_FLAGS = new Set(['-V', '--version']);
