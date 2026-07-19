@@ -10,5 +10,7 @@ export function writeHelp(registry: CommandRegistry, stdout: TextOutput): void {
     stdout.write(`  ${command.name.padEnd(12)} ${command.description}\n`);
   }
 
-  stdout.write('\nOptions:\n  -h, --help   Show help output.\n  -V, --version  Print the installed version.\n');
+  stdout.write(
+    '\nOptions:\n  -h, --help   Show help output.\n  -V, --version  Print the installed version.\n',
+  );
 }
