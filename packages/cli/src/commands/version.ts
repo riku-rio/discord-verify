@@ -5,7 +5,6 @@ import type { CliCommand } from '../cli/types.js';
 export function createVersionCommand(): CliCommand {
   return {
     name: 'version',
-    aliases: ['-v'],
     description: 'Print the installed discord-verify version.',
     usage: 'discord-verify version',
     execute({ stdout }) {
