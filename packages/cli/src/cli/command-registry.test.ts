@@ -16,14 +16,13 @@ function createCommand(overrides: Partial<CliCommand> = {}): CliCommand {
 describe('CommandRegistry', () => {
   it('resolves nested subcommands and aliases', () => {
     const showCommand = createCommand();
-    const configCommand = createCommand({
+    const configCommand: CliCommand = {
       name: 'config',
       aliases: ['cfg'],
       description: 'Manage configuration.',
       usage: 'discord-verify config <subcommand>',
-      execute: undefined,
       subcommands: [showCommand],
-    });
+    };
     const registry = new CommandRegistry();
 
     registry.register(configCommand);
